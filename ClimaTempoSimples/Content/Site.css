@@ -1,0 +1,83 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.titulo {
+    width: 103%;
+    background-color: lightblue;
+    height: 150px;
+    padding-top: 50px;
+    padding-left: 10px;
+}
+.cidadesMinMax {
+    display: inline-flex;
+    width: 100%;
+    margin: 10px;
+}
+.cidade {
+    width: 48%;
+    border-style: solid;
+    border-block-width: thin;
+    border-color: #337AB7;
+    margin:1%;
+}
+.tituloCidade {
+    width: 100%;
+    border-bottom-style: solid;
+    background-color: #337AB7;
+    border-block-width: thin;
+    border-color: #337AB7;
+}
+.filtro {
+    width: 20%;
+    margin-left: 80%;
+}
+.previsao7Dias {
+    display: inline-flex;
+    width: 100%;
+    margin: 10px;
+}
+.previsao {
+    width: 14%;
+    border-style: solid;
+    margin: 0.25%;
+    border-block-width: thin;
+    border-color: #337AB7;
+}
+.tituloPrevisao {
+    width: 100%;
+    border-bottom-style: solid;
+    border-block-width: thin;
+    border-color: #337AB7;
+    background-color: #337AB7;
+    padding:5px;
+}
+.linhaCidade{
+    display:inline-flex;
+    width:100%;
+    padding:5px;
+}
+.linhaPrevisaoTempo {
+    width: 100%;
+    padding: 5px;
+}

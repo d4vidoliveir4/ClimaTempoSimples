@@ -1,0 +1,119 @@
+﻿@model ClimaTempoSimples.Models.PrevisaoTempo
+@{
+    ViewBag.Title = "Clima";
+}
+<div class="titulo">
+    <h1>Clima Tempo Simples</h1>
+</div>
+<div class="cidadesMinMax">
+    <div class="cidade">
+        <p class="tituloCidade">Cidades mais quentes hoje</p>
+        @foreach (var previsao in Model.ListaMaioresTemperaturas)
+        {
+            @Html.Partial("_LinhaCidade", previsao)
+        }
+    </div>
+    <div class="cidade">
+        <p class="tituloCidade">Cidades mais frias hoje</p>
+        @foreach (var previsao in Model.ListaMenoresTemperaturas)
+        {
+            @Html.Partial("_LinhaCidade",previsao)
+        }
+    </div>
+</div>
+<div class="form-group filtro">
+    @Html.Label("Cidade:")
+    @Html.DropDownList("SeletorCidade", new SelectList(Model.ListaCidades, "ID", "Nome", Model.IdCidade), new { @class = "form-control text-box single-line" })
+</div>
+<div class="previsao7Dias">
+    <div class="previsao">
+        <p id="titulo1" class="tituloPrevisao">-</p>
+        <p class="linhaPrevisaoTempo"><img src="~/Content/icone.png" width="20"/> <span id="clima1">-</span></p>
+        <p class="linhaPrevisaoTempo">Minima:<span id="minima1">-</span>ºC</p>
+        <p class="linhaPrevisaoTempo">Maxima:<span id="maxima1">-</span>ºC</p>
+    </div>
+    <div class="previsao">
+        <p id="titulo2" class="tituloPrevisao">-</p>
+        <p class="linhaPrevisaoTempo"><img src="~/Content/icone.png" width="20" /> <span id="clima2">-</span></p>
+        <p class="linhaPrevisaoTempo">Minima:<span id="minima2">-</span>ºC</p>
+        <p class="linhaPrevisaoTempo">Maxima:<span id="maxima2">-</span>ºC</p>
+    </div>
+    <div class="previsao">
+        <p id="titulo3" class="tituloPrevisao">-</p>
+        <p class="linhaPrevisaoTempo"><img src="~/Content/icone.png" width="20" /> <span id="clima3">-</span></p>
+        <p class="linhaPrevisaoTempo">Minima:<span id="minima3">-</span>ºC</p>
+        <p style="width: 100%; margin-left: 5px;">Maxima:<span id="maxima3">-</span>ºC</p>
+    </div>
+    <div class="previsao">
+        <p id="titulo4" class="tituloPrevisao">-</p>
+        <p class="linhaPrevisaoTempo"><img src="~/Content/icone.png" width="20" /> <span id="clima4">-</span></p>
+        <p class="linhaPrevisaoTempo">Minima:<span id="minima4">-</span>ºC</p>
+        <p class="linhaPrevisaoTempo">Maxima:<span id="maxima4">-</span>ºC</p>
+    </div>
+    <div class="previsao">
+        <p id="titulo5" class="tituloPrevisao">-</p>
+        <p class="linhaPrevisaoTempo"><img src="~/Content/icone.png" width="20" /> <span id="clima5">-</span></p>
+        <p class="linhaPrevisaoTempo">Minima:<span id="minima5">-</span>ºC</p>
+        <p class="linhaPrevisaoTempo">Maxima:<span id="maxima5">-</span>ºC</p>
+    </div>
+    <div class="previsao">
+        <p id="titulo6" class="tituloPrevisao">-</p>
+        <p class="linhaPrevisaoTempo"><img src="~/Content/icone.png" width="20" /> <span id="clima6">-</span></p>
+        <p class="linhaPrevisaoTempo">Minima:<span id="minima6">-</span>ºC</p>
+        <p style="width: 100%; margin-left: 5px;">Maxima:<span id="maxima6">-</span>ºC</p>
+    </div>
+    <div class="previsao">
+        <p id="titulo7" class="tituloPrevisao">-</p>
+        <p class="linhaPrevisaoTempo"><img src="~/Content/icone.png" width="20" /> <span id="clima7">-</span></p>
+        <p class="linhaPrevisaoTempo">Minima:<span id="minima7">-</span>ºC</p>
+        <p class="linhaPrevisaoTempo">Maxima:<span id="maxima7">-</span>ºC</p>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(filtrar)
+        $("#SeletorCidade").change(filtrar);
+
+        function filtrar() {
+            $.ajax({
+                url: '/Home/FiltrarCidade',
+                type: "POST",
+                data: { idCidade: $("#SeletorCidade").val() },
+                success: function (result) {
+                    $("#titulo1").html(result.Titulo1);
+                    $("#titulo2").html(result.Titulo2);
+                    $("#titulo3").html(result.Titulo3);
+                    $("#titulo4").html(result.Titulo4);
+                    $("#titulo5").html(result.Titulo5);
+                    $("#titulo6").html(result.Titulo6);
+                    $("#titulo7").html(result.Titulo7);
+
+                    $("#clima1").html(result.Clima1);
+                    $("#clima2").html(result.Clima2);
+                    $("#clima3").html(result.Clima3);
+                    $("#clima4").html(result.Clima4);
+                    $("#clima5").html(result.Clima5);
+                    $("#clima6").html(result.Clima6);
+                    $("#clima7").html(result.Clima7);
+
+                    $("#minima1").html(result.Minima1);
+                    $("#minima2").html(result.Minima2);
+                    $("#minima3").html(result.Minima3);
+                    $("#minima4").html(result.Minima4);
+                    $("#minima5").html(result.Minima5);
+                    $("#minima6").html(result.Minima6);
+                    $("#minima7").html(result.Minima7);
+
+                    $("#maxima1").html(result.Maxima1);
+                    $("#maxima2").html(result.Maxima2);
+                    $("#maxima3").html(result.Maxima3);
+                    $("#maxima4").html(result.Maxima4);
+                    $("#maxima5").html(result.Maxima5);
+                    $("#maxima6").html(result.Maxima6);
+                    $("#maxima7").html(result.Maxima7);
+                }
+            });
+        }
+     </script>
+}

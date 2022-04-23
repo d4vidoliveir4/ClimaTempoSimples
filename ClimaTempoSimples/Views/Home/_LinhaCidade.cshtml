@@ -1,0 +1,6 @@
+﻿@model      ClimaTempoSimples.Entidades.PrevisaoClima
+<div class="linhaCidade">
+    <span style="width:60%;">@Model.Cidade.Nome/@Model.Cidade.Estado.UF</span>
+    <span style="width:20%">Min @(Model.TemperaturaMinima.ToString("N0"))ºC</span>
+    <span style="width:20%">Max @(Model.TemperaturaMaxima.ToString("N0"))ºC</span>
+</div>
