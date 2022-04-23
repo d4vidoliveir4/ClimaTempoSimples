@@ -1,9 +1,0 @@
-
-*.dll
-*.pdb
-*.cache
-*.dll
-*.publishsettings
-*Debug*
-*Release*
-*.pubxml*
